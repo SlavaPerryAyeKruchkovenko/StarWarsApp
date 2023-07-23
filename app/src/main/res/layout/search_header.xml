@@ -43,6 +43,5 @@
         android:src="@drawable/bookmark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/app_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorPrimaryFixed" />
+        app:layout_constraintTop_toTopOf="parent" />
 </LinearLayout>
