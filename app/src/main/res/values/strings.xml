@@ -10,4 +10,6 @@
     <string name="movies">Movies:</string>
     <string name="director">Director:</string>
     <string name="producer">Producer:</string>
+    <string name="diameter">Diameter:</string>
+    <string name="population">Population:</string>
 </resources>

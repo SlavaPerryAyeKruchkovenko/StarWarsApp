@@ -10,4 +10,6 @@
     <color name="blue_700">#002137</color>
     <color name="green_300">#66ff00</color>
     <color name="green_100">#c9ffa6</color>
+    <color name="purple_500">#ff00ff</color>
+    <color name="purple_700">#9400d3</color>
 </resources>
