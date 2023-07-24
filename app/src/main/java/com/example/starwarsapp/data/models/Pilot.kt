@@ -1,7 +1,9 @@
 package com.example.starwarsapp.data.models
 
+import com.example.starwarsapp.data.interfaces.IPilot
+
 data class Pilot(
-    val name: String,
-    val sex: String,
-    val starshipCount: Int
-)
+    override val name: String,
+    override val sex: String,
+    override val starshipCount: Int
+) : IPilot

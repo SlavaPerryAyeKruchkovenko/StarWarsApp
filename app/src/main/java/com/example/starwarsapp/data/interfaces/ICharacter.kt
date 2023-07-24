@@ -7,5 +7,5 @@ interface ICharacter {
     val name: String
     val sex: String
     val starshipsCount: Int
-    val films: List<Movie>
+    val films: List<IMovie>
 }
