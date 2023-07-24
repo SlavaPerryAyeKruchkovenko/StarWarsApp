@@ -15,4 +15,9 @@
     <string name="model">Model:</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="pilots">Pilots:</string>
+    <string name="request_type">Request type</string>
+    <string name="characters">Characters</string>
+    <string name="planets">Planets</string>
+    <string name="starships_simple">Starships</string>
+    <string name="all">All</string>
 </resources>

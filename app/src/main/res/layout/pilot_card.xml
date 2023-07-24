@@ -13,6 +13,7 @@
         app:dividerColor="?attr/pilotDivider"/>
 
     <include
+        android:layout_marginTop="@dimen/second_desc_margin"
         android:id="@+id/character"
         layout="@layout/simple_character_card"
         android:layout_height="wrap_content"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="star_wars_objects">
+        <item>@string/characters</item>
+        <item>@string/starships_simple</item>
+        <item>@string/planets</item>
+        <item>@string/all</item>
+    </string-array>
+</resources>

@@ -18,4 +18,18 @@
     <style name="CardDescriptionBold" parent="CardDescription">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="MyDropDownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:textColorHint">?attr/colorSecondary</item>
+        <item name="android:background">@drawable/drop_down_menu_bg</item>
+        <item name="hintTextColor">?attr/colorSecondary</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MyDropDownMenu.Field">
+
+    </style>
 </resources>
