@@ -20,4 +20,7 @@
     <string name="planets">Planets</string>
     <string name="starships_simple">Starships</string>
     <string name="all">All</string>
+    <string name="character">Character</string>
+    <string name="planet">Planet</string>
+    <string name="starship">Starship</string>
 </resources>

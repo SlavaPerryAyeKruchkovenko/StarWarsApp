@@ -18,7 +18,11 @@
     <style name="CardDescriptionBold" parent="CardDescription">
         <item name="android:textStyle">bold</item>
     </style>
-
+    <style name="CardTitle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">Ubuntu</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
     <style name="MyDropDownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="android:textColorHint">?attr/colorSecondary</item>
         <item name="android:background">@drawable/drop_down_menu_bg</item>
