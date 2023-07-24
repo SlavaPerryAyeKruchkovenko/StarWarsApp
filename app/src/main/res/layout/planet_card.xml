@@ -23,79 +23,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/name_block"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/like_btn"
+        <include
+            android:id="@+id/planet"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                style="@style/CardDescriptionBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name" />
-
-            <TextView
-                android:id="@+id/location"
-                style="@style/CardDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/indentation"
-                android:text="@string/no_data" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/diameter_block"
-            android:layout_width="0dp"
+            layout="@layout/simple_planet_card"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_desc_margin"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/like_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_block">
-
-            <TextView
-                style="@style/CardDescriptionBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/diameter" />
-
-            <TextView
-                android:id="@+id/diameter"
-                style="@style/CardDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/indentation"
-                android:text="@string/no_data" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/population_block"
+            app:layout_constraintEnd_toStartOf="@id/like_btn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_desc_margin"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/like_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diameter_block">
-
-            <TextView
-                style="@style/CardDescriptionBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/population" />
-
-            <TextView
-                android:id="@+id/population"
-                style="@style/CardDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/indentation"
-                android:text="@string/no_data" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -104,7 +39,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/like_btn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/population_block">
+            app:layout_constraintTop_toBottomOf="@+id/planet">
 
             <TextView
                 style="@style/CardDescriptionBold"

@@ -12,4 +12,7 @@
     <string name="producer">Producer:</string>
     <string name="diameter">Diameter:</string>
     <string name="population">Population:</string>
+    <string name="model">Model:</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="pilots">Pilots:</string>
 </resources>

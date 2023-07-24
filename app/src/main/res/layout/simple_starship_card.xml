@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/name_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name" />
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/model_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_desc_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/model" />
+
+        <TextView
+            android:id="@+id/model"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/manufacturer_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_desc_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manufacturer" />
+
+        <TextView
+            android:id="@+id/manufacturer"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+</LinearLayout>

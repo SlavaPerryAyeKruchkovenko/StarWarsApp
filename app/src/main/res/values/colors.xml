@@ -6,10 +6,14 @@
     <color name="gray_200">#D9D9D9</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="blue_100">#00ffff</color>
     <color name="blue_200">#1dacd6</color>
+    <color name="blue_300">#014bfc</color>
     <color name="blue_700">#002137</color>
     <color name="green_300">#66ff00</color>
     <color name="green_100">#c9ffa6</color>
     <color name="purple_500">#ff00ff</color>
     <color name="purple_700">#9400d3</color>
+    <color name="red_200">#ed4e4e</color>
+    <color name="red_500">#960018</color>
 </resources>
