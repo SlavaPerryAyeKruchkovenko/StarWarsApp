@@ -8,7 +8,7 @@ data class Starship(
     override val name: String,
     override val model: String,
     override val manufacturer: String,
-    override val pilots: Array<String>,
+    override val pilots: Array<Pilot>,
     override val films: Array<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id), IStarship, Likeable {
