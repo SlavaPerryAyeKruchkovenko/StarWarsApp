@@ -86,7 +86,8 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
         private val binding: StarshipCardBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        private val adapter = MoviesAdapter()
+        private val moviesAdapter = MoviesAdapter()
+        private val pilotsAdapter = PilotAdapter()
         fun bind(starWarsObject: Starship) = with(binding) {
             starship.name.text = starWarsObject.name
             starship.model.text = starWarsObject.model
@@ -95,8 +96,15 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
                 context,
                 LinearLayoutManager.VERTICAL, false
             )
-            movies.adapter = adapter
-            adapter.submitList(starWarsObject.films)
+            movies.adapter = moviesAdapter
+            moviesAdapter.submitList(starWarsObject.films)
+
+            pilots.layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.VERTICAL, false
+            )
+            pilots.adapter = pilotsAdapter
+            pilotsAdapter.submitList(starWarsObject.pilots)
         }
     }
 
@@ -120,7 +128,6 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
     }
 
     class MyDiffCallback : DiffUtil.ItemCallback<StarWarsObject>() {
-
         override fun areItemsTheSame(oldItem: StarWarsObject, newItem: StarWarsObject): Boolean {
             return oldItem == newItem
         }
