@@ -8,6 +8,6 @@ interface IStarship {
     val name: String
     val model: String
     val manufacturer: String
-    val pilots: Array<Pilot>
-    val films: Array<Movie>
+    val pilots: List<Pilot>
+    val films: List<Movie>
 }

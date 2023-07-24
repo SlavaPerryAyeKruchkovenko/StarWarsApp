@@ -8,8 +8,8 @@ data class Starship(
     override val name: String,
     override val model: String,
     override val manufacturer: String,
-    override val pilots: Array<Pilot>,
-    override val films: Array<Movie>,
+    override val pilots: List<Pilot>,
+    override val films: List<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id), IStarship, Likeable {
     var isLike = isLiked
@@ -34,8 +34,8 @@ data class Starship(
         result = 31 * result + name.hashCode()
         result = 31 * result + model.hashCode()
         result = 31 * result + manufacturer.hashCode()
-        result = 31 * result + pilots.contentHashCode()
-        result = 31 * result + films.contentHashCode()
+        result = 31 * result + pilots.hashCode()
+        result = 31 * result + films.hashCode()
         return result
     }
 }

@@ -7,5 +7,5 @@ interface IPlanet {
     val name: String
     val diameter: Int
     val population: Long
-    val films: Array<Movie>
+    val films: List<Movie>
 }

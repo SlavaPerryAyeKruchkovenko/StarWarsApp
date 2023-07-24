@@ -8,7 +8,7 @@ data class Character(
     override val name: String,
     override val sex: String,
     override val starshipsCount: Int,
-    override val films: Array<Movie>,
+    override val films: List<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id), ICharacter, Likeable {
     var isLike = isLiked
@@ -32,7 +32,7 @@ data class Character(
         var result = id.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + sex.hashCode()
-        result = 31 * result + films.contentHashCode()
+        result = 31 * result + films.hashCode()
         return result
     }
 }

@@ -25,11 +25,9 @@ class HomeFragment : Fragment() {
         init()
         return binding.root
     }
-
     private fun init() {
         initStarWarsRecycle()
     }
-
     private fun initStarWarsRecycle() {
         binding.objects.layoutManager = LinearLayoutManager(
             context,
@@ -41,7 +39,6 @@ class HomeFragment : Fragment() {
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

@@ -8,7 +8,7 @@ data class Planet(
     override val name: String,
     override val diameter: Int,
     override val population: Long,
-    override val films: Array<Movie>,
+    override val films: List<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id), IPlanet, Likeable {
     var isLike = isLiked
@@ -34,7 +34,7 @@ data class Planet(
         result = 31 * result + name.hashCode()
         result = 31 * result + diameter
         result = 31 * result + population.hashCode()
-        result = 31 * result + films.contentHashCode()
+        result = 31 * result + films.hashCode()
         return result
     }
 
