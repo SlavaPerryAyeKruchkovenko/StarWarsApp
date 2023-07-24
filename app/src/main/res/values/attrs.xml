@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPeople" format="color" />
+    <attr name="colorStarship" format="color" />
+    <attr name="colorPlanet" format="color" />
+    <attr name="movieDivider" format="color" />
+</resources>

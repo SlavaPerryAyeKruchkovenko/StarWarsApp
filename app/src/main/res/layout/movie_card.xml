@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        app:dividerColor="?attr/movieDivider"/>
+
+    <LinearLayout
+        android:id="@+id/name_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/second_desc_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name" />
+
+        <TextView
+            android:id="@+id/location"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/director_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/second_desc_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/director" />
+
+        <TextView
+            android:id="@+id/director"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/producer_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/second_desc_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CardDescriptionBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/producer" />
+
+        <TextView
+            android:id="@+id/producer"
+            style="@style/CardDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/indentation"
+            android:text="@string/no_data" />
+    </LinearLayout>
+</LinearLayout>

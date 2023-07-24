@@ -5,4 +5,9 @@
     <color name="gray_400">#C5CAE9</color>
     <color name="gray_200">#D9D9D9</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue_200">#1dacd6</color>
+    <color name="blue_700">#002137</color>
+    <color name="green_300">#66ff00</color>
+    <color name="green_100">#c9ffa6</color>
 </resources>
