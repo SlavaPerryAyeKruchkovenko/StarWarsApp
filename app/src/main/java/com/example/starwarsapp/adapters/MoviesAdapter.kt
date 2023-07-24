@@ -18,7 +18,6 @@ class MoviesAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MyDiffCallback
             )
         )
     }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         return (holder as MovieCardHolder).bind(getItem(position))
     }
