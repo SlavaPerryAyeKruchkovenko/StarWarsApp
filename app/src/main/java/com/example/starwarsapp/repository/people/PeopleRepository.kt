@@ -6,7 +6,7 @@ import com.example.starwarsapp.data.responses.CharacterResponse
 import com.example.starwarsapp.data.responses.MovieResponse
 import com.example.starwarsapp.data.responses.PeopleResponse
 import com.example.starwarsapp.repository.interfaces.IPeopleRepository
-import com.example.starwarsapp.repository.movie.MovieNetworkRepository
+import com.example.starwarsapp.repository.movie.MovieRepository
 
 class PeopleRepository : IPeopleRepository {
     override suspend fun getPeoplesByName(name: String): List<ICharacter> {
@@ -28,13 +28,13 @@ class PeopleRepository : IPeopleRepository {
         }
 
         suspend fun getMovies(urls: List<String>): List<MovieResponse> {
-            val movieNetworkRepository = MovieNetworkRepository()
             return urls.map {
-                val res = movieNetworkRepository.getMovieById(convertUrlToId(it))
-                if (res.isSuccessful) {
-                    res.body()!!
+                val id = convertUrlToId(it)
+                val movie = MovieRepository().getMovieById(id)
+                if (movie != null) {
+                    MovieResponse.fromIMovie(movie)
                 } else {
-                    throw Exception("movie not found")
+                    throw Exception("movie:${id} not found")
                 }
             }
         }
@@ -50,7 +50,7 @@ class PeopleRepository : IPeopleRepository {
 
                 val peoples = resPeoples.map {
                     CharacterResponse(
-                        it.id,
+                        convertUrlToId(it.id).toString(),
                         it.name,
                         it.sex,
                         it.starships.count(),

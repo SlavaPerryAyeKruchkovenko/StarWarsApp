@@ -14,17 +14,16 @@ import kotlinx.coroutines.withContext
 
 class HomeViewModel : ViewModel() {
     val liveData = MutableLiveData<OutputOf<List<StarWarsObject>>>()
-    private var copyLiveData: List<StarWarsObject> = listOf()
     fun init() {
         liveData.postValue(OutputOf.Loader())
         viewModelScope.launch {
             val peoples = withContext(Dispatchers.IO) {
-                PeopleRepository().getPeoplesByName("w")
+                PeopleRepository().getPeoplesByName("r2")
             }
-            copyLiveData = peoples.map {
+            val result = peoples.map {
                 Character.fromICharacter(it)
             }
-            liveData.postValue(OutputOf.Success(copyLiveData))
+            liveData.postValue(OutputOf.Success(result))
         }
     }
 }
