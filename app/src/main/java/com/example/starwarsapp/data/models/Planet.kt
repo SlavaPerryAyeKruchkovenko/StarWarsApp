@@ -1,13 +1,12 @@
 package com.example.starwarsapp.data.models
 
 import com.example.starwarsapp.data.interfaces.IPlanet
-import com.example.starwarsapp.data.interfaces.Likeable
 
 data class Planet(
     override val id: String,
     override val name: String,
-    override val diameter: Int,
-    override val population: Long,
+    override val diameter: String,
+    override val population: String,
     override val films: List<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id,isLiked), IPlanet {
@@ -23,10 +22,25 @@ data class Planet(
     override fun hashCode(): Int {
         var result = id.hashCode()
         result = 31 * result + name.hashCode()
-        result = 31 * result + diameter
+        result = 31 * result + diameter.hashCode()
         result = 31 * result + population.hashCode()
         result = 31 * result + films.hashCode()
         return result
     }
 
+    companion object {
+        fun fromIPlanet(planet: IPlanet, isLiked: Boolean = false): Planet {
+            val films = planet.films.map {
+                Movie.fromIMovie(it)
+            }
+            return Planet(
+                planet.id,
+                planet.name,
+                planet.diameter,
+                planet.population,
+                films,
+                isLiked
+            )
+        }
+    }
 }

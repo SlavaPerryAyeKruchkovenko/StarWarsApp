@@ -117,8 +117,8 @@ class StarWarsAdapter(private val listener: StarWarsObjectListener) :
         private val adapter = MoviesAdapter()
         fun bind(starWarsObject: Planet) = with(binding) {
             planet.name.text = starWarsObject.name
-            planet.diameter.text = starWarsObject.diameter.toString()
-            planet.population.text = starWarsObject.population.toString()
+            planet.diameter.text = starWarsObject.diameter
+            planet.population.text = starWarsObject.population
             movies.layoutManager = LinearLayoutManager(
                 binding.root.context,
                 LinearLayoutManager.VERTICAL, false

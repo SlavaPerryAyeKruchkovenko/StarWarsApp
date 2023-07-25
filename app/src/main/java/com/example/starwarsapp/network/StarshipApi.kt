@@ -4,14 +4,15 @@ import com.example.starwarsapp.data.responses.StarshipsListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface StarshipApi {
     @GET("starships/")
-    suspend fun getStarshipsByName(@Path("search") name: String): Response<StarshipsListResponse>
+    suspend fun getStarshipsByName(@Query("search") name: String): Response<StarshipsListResponse>
 
     @GET("planets/")
     suspend fun getStarshipsByNamePage(
-        @Path("search") name: String,
-        @Path("page") page: Int
+        @Query("search") name: String,
+        @Query("page") page: Int
     ): Response<StarshipsListResponse>
 }

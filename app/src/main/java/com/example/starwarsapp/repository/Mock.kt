@@ -12,8 +12,8 @@ class Mock {
             Planet(
                 "1",
                 "Tatooine",
-                10465,
-                200000,
+                "10465",
+                "200000",
                 listOf(
                     Movie(
                         "1",

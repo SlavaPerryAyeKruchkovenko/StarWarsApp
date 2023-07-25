@@ -1,27 +1,27 @@
-package com.example.starwarsapp.repository.people
+package com.example.starwarsapp.repository.planet
 
 import android.util.Log
-import com.example.starwarsapp.data.interfaces.ICharacter
-import com.example.starwarsapp.data.responses.CharacterResponse
+import com.example.starwarsapp.data.interfaces.IPlanet
 import com.example.starwarsapp.data.responses.MovieResponse
-import com.example.starwarsapp.data.responses.PeopleResponse
-import com.example.starwarsapp.repository.interfaces.IPeopleRepository
+import com.example.starwarsapp.data.responses.PlanetImpResponse
+import com.example.starwarsapp.data.responses.PlanetResponse
+import com.example.starwarsapp.repository.interfaces.IPlanetRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.utils.Converter
 
-class PeopleRepository : IPeopleRepository {
-    override suspend fun getPeoplesByName(name: String): List<ICharacter> {
-        val networkRepository = PeopleNetworkRepository()
+class PlanetRepository : IPlanetRepository {
+    override suspend fun getPlanetsByName(name: String): List<IPlanet> {
+        val networkRepository = PlanetNetworkRepository()
 
-        suspend fun getNext(next: String): List<PeopleResponse> {
+        suspend fun getNext(next: String): List<PlanetResponse> {
             val page = Converter.convertUrlToPage(next)
-            val res = networkRepository.getPeoplesByNamePage(name, page)
+            val res = networkRepository.getPlanetsByNamePage(name, page)
             if (res.isSuccessful) {
                 val response = res.body()!!
                 return if (response.next != null) {
-                    response.peoples + getNext(response.next)
+                    response.planets + getNext(response.next)
                 } else {
-                    response.peoples
+                    response.planets
                 }
             } else {
                 throw Exception("get page:${page} data error")
@@ -40,30 +40,30 @@ class PeopleRepository : IPeopleRepository {
             }
         }
         return try {
-            val res = networkRepository.getPeoplesByName(name)
+            val res = networkRepository.getPlanetsByName(name)
             if (res.isSuccessful) {
                 val response = res.body()!!
-                val resPeoples = response.peoples.toMutableList()
+                val resPlanets = response.planets.toMutableList()
 
                 if (response.next != null) {
-                    resPeoples += getNext(response.next)
+                    resPlanets += getNext(response.next)
                 }
 
-                val peoples = resPeoples.map {
-                    CharacterResponse(
+                val planets = resPlanets.map {
+                    PlanetImpResponse(
                         Converter.convertUrlToId(it.id).toString(),
                         it.name,
-                        it.sex,
-                        it.starships.count(),
+                        it.diameter,
+                        it.population,
                         getMovies(it.films)
                     )
                 }
-                peoples
+                planets
             } else {
                 listOf()
             }
         } catch (e: Exception) {
-            Log.e("get peoples by name error", e.toString())
+            Log.e("get planets by name error", e.toString())
             listOf()
         }
     }

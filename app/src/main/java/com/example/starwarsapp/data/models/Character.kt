@@ -10,21 +10,6 @@ data class Character(
     override val films: List<Movie>,
     private val isLiked: Boolean = false
 ) : StarWarsObject(id, isLiked), ICharacter {
-    companion object {
-        fun fromICharacter(character: ICharacter, isLiked: Boolean = false): Character {
-            val films = character.films.map {
-                Movie.fromIMovie(it)
-            }
-            return Character(
-                character.id,
-                character.name,
-                character.sex,
-                character.starshipsCount,
-                films,
-                isLiked
-            )
-        }
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -39,5 +24,21 @@ data class Character(
         result = 31 * result + sex.hashCode()
         result = 31 * result + films.hashCode()
         return result
+    }
+
+    companion object {
+        fun fromICharacter(character: ICharacter, isLiked: Boolean = false): Character {
+            val films = character.films.map {
+                Movie.fromIMovie(it)
+            }
+            return Character(
+                character.id,
+                character.name,
+                character.sex,
+                character.starshipsCount,
+                films,
+                isLiked
+            )
+        }
     }
 }
