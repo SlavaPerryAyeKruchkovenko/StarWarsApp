@@ -23,6 +23,7 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         init()
+        viewModel.init()
         return binding.root
     }
     private fun init() {

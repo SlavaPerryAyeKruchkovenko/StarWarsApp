@@ -30,8 +30,8 @@ class MoviesAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MyDiffCallback
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) = with(binding) {
             name.text = movie.name
-            director.text = movie.name
-            producer.text = movie.name
+            director.text = movie.director
+            producer.text = movie.producer
         }
     }
 

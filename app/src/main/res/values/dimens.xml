@@ -7,5 +7,5 @@
     <dimen name="card_desc_margin">8dp</dimen>
     <dimen name="second_recycle_margin">24dp</dimen>
     <dimen name="second_desc_margin">8dp</dimen>
-    <dimen name="recycle_padding_bottom">40dp</dimen>
+    <dimen name="recycle_padding_bottom">12dp</dimen>
 </resources>

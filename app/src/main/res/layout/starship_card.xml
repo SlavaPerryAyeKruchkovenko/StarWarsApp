@@ -80,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/second_recycle_margin"
                 app:spanCount="1"
-                tools:itemCount="1"
                 tools:listitem="@layout/pilot_card" />
         </LinearLayout>
 
@@ -105,7 +104,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/second_recycle_margin"
                 app:spanCount="1"
-                tools:itemCount="1"
                 tools:listitem="@layout/movie_card" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

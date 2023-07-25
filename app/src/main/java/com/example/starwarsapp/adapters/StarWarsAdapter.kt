@@ -73,7 +73,7 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             character.sex.text = starWarsObject.sex
             character.starships.text = starWarsObject.starshipsCount.toString()
             movies.layoutManager = LinearLayoutManager(
-                context,
+                binding.root.context,
                 LinearLayoutManager.VERTICAL, false
             )
             movies.adapter = adapter
@@ -93,14 +93,13 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             starship.model.text = starWarsObject.model
             starship.manufacturer.text = starWarsObject.manufacturer
             movies.layoutManager = LinearLayoutManager(
-                context,
+                binding.root.context,
                 LinearLayoutManager.VERTICAL, false
             )
             movies.adapter = moviesAdapter
             moviesAdapter.submitList(starWarsObject.films)
-
             pilots.layoutManager = LinearLayoutManager(
-                context,
+                binding.root.context,
                 LinearLayoutManager.VERTICAL, false
             )
             pilots.adapter = pilotsAdapter
@@ -119,7 +118,7 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             planet.diameter.text = starWarsObject.diameter.toString()
             planet.population.text = starWarsObject.population.toString()
             movies.layoutManager = LinearLayoutManager(
-                context,
+                binding.root.context,
                 LinearLayoutManager.VERTICAL, false
             )
             movies.adapter = adapter
