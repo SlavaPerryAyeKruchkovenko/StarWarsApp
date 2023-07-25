@@ -4,25 +4,14 @@ import com.example.starwarsapp.data.interfaces.IStarship
 import com.example.starwarsapp.data.interfaces.Likeable
 
 data class Starship(
-    override val id: String,
+    private val _id: String,
     override val name: String,
     override val model: String,
     override val manufacturer: String,
     override val pilots: List<Pilot>,
     override val films: List<Movie>,
     private val isLiked: Boolean = false
-) : StarWarsObject(id), IStarship, Likeable {
-    var isLike = isLiked
-        private set
-
-    override fun dislike() {
-        isLike = false
-    }
-
-    override fun like() {
-        isLike = true
-    }
-
+) : StarWarsObject(_id,isLiked), IStarship {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
