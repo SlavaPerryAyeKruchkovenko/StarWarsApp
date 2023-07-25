@@ -2,25 +2,28 @@ package com.example.starwarsapp.ui.favourite
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.starwarsapp.data.models.OutputOf
 import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.repository.Mock
 
 class FavouriteViewModel : ViewModel() {
-    val liveData = MutableLiveData<List<StarWarsObject>>()
+    val liveData = MutableLiveData<OutputOf<List<StarWarsObject>>>()
 
     fun init() {
-        liveData.postValue(Mock().getStarWarsObjects())
+        liveData.postValue(OutputOf.Success(Mock().getStarWarsObjects()))
     }
 
     fun removeElement(starWarsObject: StarWarsObject) {
-        if (liveData.value != null) {
-            liveData.postValue(liveData.value!!.filter {
+        if (liveData.value is OutputOf.Success) {
+            val success = liveData.value as OutputOf.Success
+            val data = success.value.filter {
                 it.javaClass !== starWarsObject.javaClass || it.id !== starWarsObject.id
-            })
+            }
+            liveData.postValue(OutputOf.Success(data))
         }
     }
 
     fun clear() {
-        liveData.postValue(listOf())
+        liveData.postValue(OutputOf.Nothing())
     }
 }

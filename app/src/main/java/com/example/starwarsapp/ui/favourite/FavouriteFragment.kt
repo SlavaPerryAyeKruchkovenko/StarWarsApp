@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapp.adapters.StarWarsAdapter
+import com.example.starwarsapp.data.models.OutputOf
 import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.databinding.FragmentFavouriteBinding
 import com.example.starwarsapp.interfaces.listener.StarWarsObjectListener
@@ -52,8 +53,29 @@ class FavouriteFragment : Fragment(), StarWarsObjectListener {
             LinearLayoutManager.VERTICAL, false
         )
         binding.likedObjects.adapter = starWarsAdapter
-        val observer = Observer<List<StarWarsObject>> { newValue ->
-            starWarsAdapter.submitList(newValue)
+        val observer = Observer<OutputOf<List<StarWarsObject>>> { newValue ->
+            when (newValue) {
+                is OutputOf.Success -> {
+                    starWarsAdapter.submitList(newValue.value)
+                    binding.favourites.visibility = View.VISIBLE
+                    binding.loader.root.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
+                }
+                is OutputOf.Nothing -> {
+                    binding.favourites.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.emptyText.visibility = View.VISIBLE
+                }
+                is OutputOf.Loader -> {
+                    binding.favourites.visibility = View.GONE
+                    binding.loader.root.visibility = View.VISIBLE
+                    binding.emptyText.visibility = View.GONE
+                }
+                else -> {
+                    throw Exception("incorrect type of result")
+                }
+            }
+
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }

@@ -8,12 +8,17 @@
     tools:context=".ui.favourite.FavouriteFragment">
 
     <include
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/appbar"
         layout="@layout/default_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/favourites"
+        android:visibility="gone"
         android:layout_marginHorizontal="@dimen/recycle_margin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -47,4 +52,26 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/favourite_no_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        style="@style/BigTitle"/>
+
+    <include
+        android:id="@+id/loader"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        layout="@layout/loader"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
