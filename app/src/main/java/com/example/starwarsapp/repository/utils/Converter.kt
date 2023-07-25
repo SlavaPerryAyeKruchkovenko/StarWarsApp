@@ -10,8 +10,6 @@ object Converter {
     fun convertUrlToId(url: String): Int {
         val splits = url.split("/")
         return if (splits.size > 2) {
-            /*Log.d("value",splits[splits.size - 2])
-            Log.d("value",splits[splits.size - 2].toInt().toString())*/
             splits[splits.size - 2].toInt()
         } else {
             1

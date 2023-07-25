@@ -2,9 +2,11 @@ package com.example.starwarsapp.repository.people
 
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.ICharacter
+import com.example.starwarsapp.data.interfaces.IPilot
 import com.example.starwarsapp.data.responses.CharacterResponse
 import com.example.starwarsapp.data.responses.MovieResponse
 import com.example.starwarsapp.data.responses.PeopleResponse
+import com.example.starwarsapp.data.responses.PilotResponse
 import com.example.starwarsapp.repository.interfaces.IPeopleRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.utils.Converter
@@ -65,6 +67,17 @@ class PeopleRepository : IPeopleRepository {
         } catch (e: Exception) {
             Log.e("get peoples by name error", e.toString())
             listOf()
+        }
+    }
+
+    override suspend fun getPilotById(id: Int): IPilot? {
+        val networkRepository = PeopleNetworkRepository()
+        val res = networkRepository.getPeople(id)
+        return if (res.isSuccessful) {
+            val pilot = res.body()!!
+            PilotResponse(id.toString(), pilot.name, pilot.sex, pilot.starships.count())
+        } else {
+            null
         }
     }
 }

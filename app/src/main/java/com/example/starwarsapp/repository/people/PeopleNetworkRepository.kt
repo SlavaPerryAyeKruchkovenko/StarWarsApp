@@ -10,7 +10,7 @@ class PeopleNetworkRepository : IPeopleNetworkRepository {
     override suspend fun getPeoplesByName(name: String): Response<PeoplesListResponse> {
         return RetrofitBuilder.peopleApi.getPeoplesByName(name)
     }
-
+    
     override suspend fun getPeoplesByNamePage(
         name: String,
         page: Int

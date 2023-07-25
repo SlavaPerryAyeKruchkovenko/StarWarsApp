@@ -6,8 +6,8 @@ import com.example.starwarsapp.repository.interfaces.IMovieRepository
 
 class MovieRepository : IMovieRepository {
     override suspend fun getMovieById(id: Int): IMovie? {
-        val movieNetworkRepository = MovieNetworkRepository()
-        val res = movieNetworkRepository.getMovieById(id)
+        val networkRepository = MovieNetworkRepository()
+        val res = networkRepository.getMovieById(id)
         return if (res.isSuccessful) {
             val movie = res.body()!!
             MovieResponse(movie.name, movie.director, movie.producer, id.toString())
