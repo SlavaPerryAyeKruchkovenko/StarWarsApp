@@ -15,7 +15,8 @@ data class Character(
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        return id == (other as Character).id
+        other as Character
+        return id == other.id && isLike == other.isLike
     }
 
     override fun hashCode(): Int {

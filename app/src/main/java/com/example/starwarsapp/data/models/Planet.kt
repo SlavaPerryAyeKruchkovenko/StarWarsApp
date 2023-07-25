@@ -16,7 +16,8 @@ data class Planet(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        return id == (other as Planet).id
+        other as Planet
+        return id == other.id && isLike == other.isLike
     }
 
     override fun hashCode(): Int {

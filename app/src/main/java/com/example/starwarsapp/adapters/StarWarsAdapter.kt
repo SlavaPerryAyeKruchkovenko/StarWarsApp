@@ -1,8 +1,8 @@
 package com.example.starwarsapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -15,8 +15,10 @@ import com.example.starwarsapp.data.models.Starship
 import com.example.starwarsapp.databinding.CharacterCardBinding
 import com.example.starwarsapp.databinding.PlanetCardBinding
 import com.example.starwarsapp.databinding.StarshipCardBinding
+import com.example.starwarsapp.interfaces.listener.StarWarsObjectListener
 
-class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyDiffCallback()) {
+class StarWarsAdapter(private val listener: StarWarsObjectListener) :
+    ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             R.layout.character_card -> {
@@ -24,21 +26,21 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                CharacterCardHolder(parent.context, binding)
+                CharacterCardHolder(binding)
             }
             R.layout.starship_card -> {
                 val binding = StarshipCardBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                StarshipCardHolder(parent.context, binding)
+                StarshipCardHolder(binding)
             }
             R.layout.planet_card -> {
                 val binding = PlanetCardBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                PlanetCardHolder(parent.context, binding)
+                PlanetCardHolder(binding)
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -63,7 +65,6 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
     }
 
     inner class CharacterCardHolder(
-        private val context: Context,
         private val binding: CharacterCardBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -78,11 +79,12 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             )
             movies.adapter = adapter
             adapter.submitList(starWarsObject.films)
+
+            initLikeImage(likeBtn, starWarsObject)
         }
     }
 
     inner class StarshipCardHolder(
-        private val context: Context,
         private val binding: StarshipCardBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -104,11 +106,11 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             )
             pilots.adapter = pilotsAdapter
             pilotsAdapter.submitList(starWarsObject.pilots)
+
+            initLikeImage(likeBtn, starWarsObject)
         }
     }
-
     inner class PlanetCardHolder(
-        private val context: Context,
         private val binding: PlanetCardBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -123,6 +125,21 @@ class StarWarsAdapter : ListAdapter<StarWarsObject, RecyclerView.ViewHolder>(MyD
             )
             movies.adapter = adapter
             adapter.submitList(starWarsObject.films)
+
+            initLikeImage(likeBtn, starWarsObject)
+        }
+    }
+
+    private fun initLikeImage(likeBtn: ImageView, SWObject: StarWarsObject) {
+        likeBtn.setOnClickListener {
+            listener.onClick(SWObject)
+
+            likeBtn.setImageResource(
+                if (SWObject.isLike)
+                    R.drawable.heart_like
+                else
+                    R.drawable.heart
+            )
         }
     }
 

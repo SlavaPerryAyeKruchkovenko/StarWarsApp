@@ -7,7 +7,9 @@ import com.example.starwarsapp.repository.Mock
 
 class HomeViewModel : ViewModel() {
     val liveData = MutableLiveData<List<StarWarsObject>>()
+    private var copyLiveData: List<StarWarsObject> = listOf()
     fun init() {
-        liveData.postValue(Mock().getStarWarsObjects())
+        copyLiveData = Mock().getStarWarsObjects()
+        liveData.postValue(copyLiveData)
     }
 }

@@ -15,7 +15,9 @@ data class Starship(
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        return id == (other as Starship).id
+
+        other as Starship
+        return id == other.id && isLike == other.isLike
     }
 
     override fun hashCode(): Int {
