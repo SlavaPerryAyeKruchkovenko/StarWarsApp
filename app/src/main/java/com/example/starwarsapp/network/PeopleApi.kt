@@ -10,6 +10,12 @@ interface PeopleApi {
     @GET("people/?search={name}/")
     suspend fun getPeoplesByName(@Path("name") name: String): Response<PeoplesListResponse>
 
+    @GET("people/?search={name}&page?={page}/")
+    suspend fun getPeoplesByNamePage(
+        @Path("name") name: String,
+        @Path("page") page: Int
+    ): Response<PeoplesListResponse>
+
     @GET("people/{id}/")
-    suspend fun getPeoplesById(@Path("id") id: String): Response<PeopleResponse>
+    suspend fun getPeopleById(@Path("id") id: Int): Response<PeopleResponse>
 }
