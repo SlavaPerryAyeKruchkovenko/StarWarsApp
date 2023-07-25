@@ -28,11 +28,10 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/liked_profiles"
+                android:id="@+id/liked_objects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/planet_card"
-                tools:itemCount="1"/>
+                tools:listitem="@layout/planet_card"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/ClearBtn"

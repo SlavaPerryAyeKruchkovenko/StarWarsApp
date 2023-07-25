@@ -6,18 +6,59 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.starwarsapp.adapters.StarWarsAdapter
+import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.databinding.FragmentFavouriteBinding
+import com.example.starwarsapp.interfaces.listener.StarWarsObjectListener
 
-class FavouriteFragment : Fragment() {
+class FavouriteFragment : Fragment(), StarWarsObjectListener {
     private var _binding: FragmentFavouriteBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<FavouriteViewModel>()
+    private val starWarsAdapter = StarWarsAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
+        init()
+        viewModel.init()
         return binding.root
+    }
+
+    private fun init() {
+        initStarWarsRecycle()
+        initHeaderMenu()
+        initClearBtn()
+    }
+
+    private fun initHeaderMenu() {
+        binding.appbar.toolBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+    private fun initClearBtn(){
+        binding.clear.setOnClickListener{
+            viewModel.clear()
+        }
+    }
+    private fun initStarWarsRecycle() {
+        binding.likedObjects.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL, false
+        )
+        binding.likedObjects.adapter = starWarsAdapter
+        val observer = Observer<List<StarWarsObject>> { newValue ->
+            starWarsAdapter.submitList(newValue)
+        }
+        viewModel.liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    override fun onClick(SWObject: StarWarsObject) {
+        viewModel.removeElement(SWObject)
     }
 }
