@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapp.R
 import com.example.starwarsapp.adapters.StarWarsAdapter
+import com.example.starwarsapp.data.models.OutputOf
 import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.databinding.FragmentHomeBinding
 import com.example.starwarsapp.interfaces.listener.StarWarsObjectListener
@@ -39,8 +40,37 @@ class HomeFragment : Fragment(), StarWarsObjectListener {
             LinearLayoutManager.VERTICAL, false
         )
         binding.objects.adapter = starWarsAdapter
-        val observer = Observer<List<StarWarsObject>> { newValue ->
-            starWarsAdapter.submitList(newValue)
+        val observer = Observer<OutputOf<List<StarWarsObject>>> { newValue ->
+            when (newValue) {
+                is OutputOf.Success -> {
+                    starWarsAdapter.submitList(newValue.value)
+                    binding.objects.visibility = View.VISIBLE
+                    binding.loader.root.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
+                    binding.notFound.visibility = View.GONE
+                }
+                is OutputOf.Nothing -> {
+                    binding.objects.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.emptyText.visibility = View.VISIBLE
+                    binding.notFound.visibility = View.GONE
+                }
+                is OutputOf.Loader -> {
+                    binding.objects.visibility = View.GONE
+                    binding.loader.root.visibility = View.VISIBLE
+                    binding.emptyText.visibility = View.GONE
+                    binding.notFound.visibility = View.GONE
+                }
+                is OutputOf.Error -> {
+                    binding.objects.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.emptyText.visibility = View.GONE
+                    binding.notFound.visibility = View.VISIBLE
+                }
+                else -> {
+                    throw Exception("incorrect type of result")
+                }
+            }
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
