@@ -23,4 +23,5 @@
     <string name="character">Character</string>
     <string name="planet">Planet</string>
     <string name="starship">Starship</string>
+    <string name="clear">Clear</string>
 </resources>

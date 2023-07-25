@@ -23,6 +23,7 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">?attr/colorSecondary</item>
     </style>
+
     <style name="MyDropDownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="android:textColorHint">?attr/colorSecondary</item>
         <item name="android:background">@drawable/drop_down_menu_bg</item>
@@ -33,7 +34,18 @@
         <item name="boxCornerRadiusTopStart">16dp</item>
         <item name="android:textSize">20sp</item>
     </style>
-    <style name="MyDropDownMenu.Field">
 
+    <style name="MyDropDownMenu.Field"/>
+
+    <style name="Widget.Material3.AppBarLayout.Default" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">?attr/colorOnPrimary</item>
     </style>
+
+    <style name="ClearBtn" parent="Widget.Material3.Button">
+        <item name="backgroundTint">?attr/colorOnPrimary</item>
+        <item name="fontFamily">Ubuntu</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+
 </resources>
