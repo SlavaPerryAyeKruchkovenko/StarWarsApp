@@ -7,5 +7,5 @@ import retrofit2.http.Path
 
 interface StarshipApi {
     @GET("starships/?search={name}")
-    suspend fun getStarshipsByName(@Path("name") artifactId: String): Response<StarshipsListResponse>
+    suspend fun getStarshipsByName(@Path("name") name: String): Response<StarshipsListResponse>
 }
