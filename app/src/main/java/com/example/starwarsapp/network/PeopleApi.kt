@@ -5,17 +5,18 @@ import com.example.starwarsapp.data.responses.PeoplesListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PeopleApi {
-    @GET("people/?search={name}/")
-    suspend fun getPeoplesByName(@Path("name") name: String): Response<PeoplesListResponse>
+    @GET("people/")
+    suspend fun getPeoplesByName(@Query("search") name: String): Response<PeoplesListResponse>
 
-    @GET("people/?search={name}&page?={page}/")
+    @GET("people/")
     suspend fun getPeoplesByNamePage(
-        @Path("name") name: String,
-        @Path("page") page: Int
+        @Query("search") name: String,
+        @Query("page") page: Int
     ): Response<PeoplesListResponse>
 
-    @GET("people/{id}/")
+    @GET("people/{id}")
     suspend fun getPeopleById(@Path("id") id: Int): Response<PeopleResponse>
 }

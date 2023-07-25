@@ -4,13 +4,13 @@ import com.example.starwarsapp.data.interfaces.IPlanet
 import com.example.starwarsapp.data.interfaces.Likeable
 
 data class Planet(
-    private val _id: String,
+    override val id: String,
     override val name: String,
     override val diameter: Int,
     override val population: Long,
     override val films: List<Movie>,
     private val isLiked: Boolean = false
-) : StarWarsObject(_id,isLiked), IPlanet {
+) : StarWarsObject(id,isLiked), IPlanet {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

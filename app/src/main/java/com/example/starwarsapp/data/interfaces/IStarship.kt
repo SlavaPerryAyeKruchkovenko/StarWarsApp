@@ -1,6 +1,7 @@
 package com.example.starwarsapp.data.interfaces
 
 interface IStarship {
+    val id: String
     val name: String
     val model: String
     val manufacturer: String

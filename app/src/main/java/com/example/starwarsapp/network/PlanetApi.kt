@@ -7,11 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PlanetApi {
-    @GET("planets/?search={name}/")
-    suspend fun getPlanetsByName(@Path("name") name: String): Response<PlanetListResponse>
-    @GET("planets/?search={name}&page?={page}/")
+    @GET("planets/")
+    suspend fun getPlanetsByName(@Path("search") name: String): Response<PlanetListResponse>
+    @GET("planets/")
     suspend fun getPlanetsByNamePage(
-        @Path("name") name: String,
+        @Path("search") name: String,
         @Path("page") page: Int
     ): Response<PlanetListResponse>
 }

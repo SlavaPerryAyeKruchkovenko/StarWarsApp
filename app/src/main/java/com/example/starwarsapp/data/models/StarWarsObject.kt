@@ -3,7 +3,7 @@ package com.example.starwarsapp.data.models
 import com.example.starwarsapp.data.interfaces.Likeable
 
 sealed class StarWarsObject(
-    val id: String,
+    val _id: String,
     isLiked: Boolean
 ) : Likeable {
     var isLike = isLiked

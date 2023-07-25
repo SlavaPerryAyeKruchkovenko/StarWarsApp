@@ -17,7 +17,7 @@ class FavouriteViewModel : ViewModel() {
         if (liveData.value is OutputOf.Success) {
             val success = liveData.value as OutputOf.Success
             val data = success.value.filter {
-                it.javaClass !== starWarsObject.javaClass || it.id !== starWarsObject.id
+                it.javaClass !== starWarsObject.javaClass || it._id !== starWarsObject._id
             }
             liveData.postValue(OutputOf.Success(data))
         }

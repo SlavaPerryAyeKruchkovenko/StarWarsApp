@@ -7,4 +7,10 @@ data class Movie(
     override val name: String,
     override val director: String,
     override val producer: String,
-): IMovie
+) : IMovie {
+    companion object {
+        fun fromIMovie(movie: IMovie): Movie {
+            return Movie(movie.id, movie.name, movie.director, movie.producer)
+        }
+    }
+}
