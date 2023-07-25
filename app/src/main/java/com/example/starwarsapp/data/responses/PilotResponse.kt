@@ -7,4 +7,10 @@ data class PilotResponse(
     override val name: String,
     override val sex: String,
     override val starshipCount: Int
-):IPilot
+) : IPilot {
+    companion object {
+        fun fromIPilot(pilot: IPilot): PilotResponse {
+            return PilotResponse(pilot.id, pilot.name, pilot.sex, pilot.starshipCount)
+        }
+    }
+}

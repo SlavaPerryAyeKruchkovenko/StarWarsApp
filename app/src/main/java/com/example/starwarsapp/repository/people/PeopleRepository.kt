@@ -72,11 +72,16 @@ class PeopleRepository : IPeopleRepository {
 
     override suspend fun getPilotById(id: Int): IPilot? {
         val networkRepository = PeopleNetworkRepository()
-        val res = networkRepository.getPeople(id)
-        return if (res.isSuccessful) {
-            val pilot = res.body()!!
-            PilotResponse(id.toString(), pilot.name, pilot.sex, pilot.starships.count())
-        } else {
+        return try {
+            val res = networkRepository.getPeople(id)
+            if (res.isSuccessful) {
+                val pilot = res.body()!!
+                PilotResponse(id.toString(), pilot.name, pilot.sex, pilot.starships.count())
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("get pilot by id error", e.toString())
             null
         }
     }

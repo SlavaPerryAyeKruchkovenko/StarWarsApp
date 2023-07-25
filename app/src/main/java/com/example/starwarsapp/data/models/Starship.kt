@@ -1,7 +1,6 @@
 package com.example.starwarsapp.data.models
 
 import com.example.starwarsapp.data.interfaces.IStarship
-import com.example.starwarsapp.data.interfaces.Likeable
 
 data class Starship(
     override val id: String,
@@ -28,5 +27,24 @@ data class Starship(
         result = 31 * result + pilots.hashCode()
         result = 31 * result + films.hashCode()
         return result
+    }
+
+    companion object {
+        fun fromIStarship(starship: IStarship): Starship {
+            val pilots = starship.pilots.map {
+                Pilot.fromIPilot(it)
+            }
+            val films = starship.films.map {
+                Movie.fromIMovie(it)
+            }
+            return Starship(
+                starship.id,
+                starship.name,
+                starship.model,
+                starship.manufacturer,
+                pilots,
+                films
+            )
+        }
     }
 }
