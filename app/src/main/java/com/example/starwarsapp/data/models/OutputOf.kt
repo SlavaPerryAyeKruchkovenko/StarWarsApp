@@ -6,6 +6,7 @@ sealed class OutputOf<out T> {
         val message: String?
     ) : OutputOf<R>()
 
+    data class Error<out R>(val message: String) : OutputOf<R>()
     class Loader<out R> : OutputOf<R>()
     class Nothing<out R> : OutputOf<R>()
 }

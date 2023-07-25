@@ -26,4 +26,6 @@
     <string name="clear">Clear</string>
     <string name="favourite_no_data">it\'s still empty here</string>
     <string name="loader">loader</string>
+    <string name="enter_text">Enter 2 or more characters to get the result</string>
+    <string name="not_found">Not found</string>
 </resources>

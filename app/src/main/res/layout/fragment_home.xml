@@ -38,6 +38,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/objects"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -48,4 +49,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:spanCount="1"
         tools:listitem="@layout/character_card" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        style="@style/BigTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_margin"
+        android:text="@string/enter_text"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/request_selector" />
+
+    <TextView
+        android:id="@+id/not_found"
+        style="@style/BigTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_margin"
+        android:text="@string/not_found"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/request_selector" />
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/request_selector" />
 </androidx.constraintlayout.widget.ConstraintLayout>
