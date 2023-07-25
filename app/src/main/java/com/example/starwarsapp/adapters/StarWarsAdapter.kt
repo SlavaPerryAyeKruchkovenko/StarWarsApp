@@ -131,16 +131,20 @@ class StarWarsAdapter(private val listener: StarWarsObjectListener) :
     }
 
     private fun initLikeImage(likeBtn: ImageView, SWObject: StarWarsObject) {
+        changeImage(likeBtn, SWObject)
         likeBtn.setOnClickListener {
             listener.onClick(SWObject)
-
-            likeBtn.setImageResource(
-                if (SWObject.isLike)
-                    R.drawable.heart_like
-                else
-                    R.drawable.heart
-            )
+            changeImage(likeBtn, SWObject)
         }
+    }
+
+    private fun changeImage(likeBtn: ImageView, SWObject: StarWarsObject) {
+        likeBtn.setImageResource(
+            if (SWObject.isLike)
+                R.drawable.heart_like
+            else
+                R.drawable.heart
+        )
     }
 
     class MyDiffCallback : DiffUtil.ItemCallback<StarWarsObject>() {

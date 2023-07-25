@@ -1,14 +1,15 @@
 package com.example.starwarsapp.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.starwarsapp.R
 import com.example.starwarsapp.adapters.StarWarsAdapter
 import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.databinding.FragmentHomeBinding
@@ -30,6 +31,7 @@ class HomeFragment : Fragment(), StarWarsObjectListener {
     }
     private fun init() {
         initStarWarsRecycle()
+        initFavouriteBtn()
     }
     private fun initStarWarsRecycle() {
         binding.objects.layoutManager = LinearLayoutManager(
@@ -41,6 +43,12 @@ class HomeFragment : Fragment(), StarWarsObjectListener {
             starWarsAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun initFavouriteBtn() {
+        binding.searchAppbar.favouriteBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_favouriteFragment)
+        }
     }
 
     override fun onDestroy() {
