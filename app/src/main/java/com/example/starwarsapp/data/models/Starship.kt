@@ -30,7 +30,7 @@ data class Starship(
     }
 
     companion object {
-        fun fromIStarship(starship: IStarship): Starship {
+        fun fromIStarship(starship: IStarship,isLiked: Boolean = false): Starship {
             val pilots = starship.pilots.map {
                 Pilot.fromIPilot(it)
             }
@@ -43,7 +43,8 @@ data class Starship(
                 starship.model,
                 starship.manufacturer,
                 pilots,
-                films
+                films,
+                isLiked
             )
         }
     }

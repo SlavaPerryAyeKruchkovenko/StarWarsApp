@@ -25,6 +25,7 @@ class PeopleLocalRepository : IPeopleLocalRepository {
         val db = StarWarsApp.getDatabase()
         val dbPeople = db?.peopleDao()?.getPeopleById(people.id)
         if (dbPeople != null) {
+            dbPeople.people.isLike = if (people.isLiked) 1 else 0
             db.peopleDao().updatePeople(dbPeople.people)
         }
     }

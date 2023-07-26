@@ -10,7 +10,7 @@ import com.example.starwarsapp.database.relation.PlanetWithMovies
 interface PlanetDao {
     @Query("Select * from PlanetEntity WHERE id = :id")
     suspend fun getPlanetById(id: String): PlanetWithMovies?
-    @Query("SELECT * FROM PlanetEntity WHERE name = :name")
+    @Query("SELECT * FROM PlanetEntity WHERE LOWER(name) LIKE '%' || LOWER(:name) || '%'")
     suspend fun getPlanetsByName(name: String): List<PlanetWithMovies>
 
     @Query("SELECT * FROM PlanetEntity WHERE isLike = 1")

@@ -25,6 +25,7 @@ class PlanetLocalRepository : IPlanetLocalRepository {
         val db = StarWarsApp.getDatabase()
         val dbPlanet = db?.planetDao()?.getPlanetById(planet.id)
         if (dbPlanet != null) {
+            dbPlanet.planet.isLike = if (planet.isLiked) 1 else 0
             db.planetDao().updatePlanet(dbPlanet.planet)
         }
     }

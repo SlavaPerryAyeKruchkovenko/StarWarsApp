@@ -12,10 +12,10 @@ interface StarshipDao {
     @Query("Select * from StarshipEntity WHERE id = :id")
     suspend fun getStarshipById(id: String): StarshipWithMoviesAndPilot?
 
-    @Query("SELECT * FROM StarshipEntity WHERE name = :name")
+    @Query("SELECT * FROM StarshipEntity WHERE LOWER(name) LIKE '%' || LOWER(:name) || '%'")
     suspend fun getStarshipsByName(name: String): List<StarshipWithMoviesAndPilot>
 
-    @Query("SELECT * FROM StarshipEntity WHERE isLike = 1")
+    @Query("SELECT * FROM StarshipEntity WHERE isLike >= 1")
     suspend fun getLikedStarships(): List<StarshipWithMoviesAndPilot>
 
     @Query("UPDATE StarshipEntity SET isLike = 0 WHERE isLike >= 1")
@@ -31,16 +31,14 @@ interface StarshipDao {
             val pilots = starship.pilots.map {
                 PilotEntity.fromIPilot(it)
             }
-            if (dbStarship != null) {
-                deleteStarship(dbStarship.starship, dbStarship.movies, dbStarship.pilots)
-                insertStarship(
-                    StarshipEntity.fromIStarship(starship, dbStarship.starship.isLike),
-                    movies,
-                    pilots
-                )
-            } else {
-                insertStarship(StarshipEntity.fromIStarship(starship), movies, pilots)
-            }
+            insertStarship(
+                StarshipEntity.fromIStarship(
+                    starship,
+                    dbStarship?.starship?.isLike ?: 0
+                ),
+                movies,
+                pilots
+            )
         }
     }
 
@@ -54,7 +52,7 @@ interface StarshipDao {
     @Update
     suspend fun updateStarship(starship: StarshipEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStarship(
         starship: StarshipEntity,
         movie: List<MovieEntity>,

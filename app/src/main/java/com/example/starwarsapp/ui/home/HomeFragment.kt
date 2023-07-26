@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.starwarsapp.R
 import com.example.starwarsapp.adapters.StarWarsAdapter
+import com.example.starwarsapp.data.interfaces.Likeable
 import com.example.starwarsapp.data.models.OutputOf
 import com.example.starwarsapp.data.models.StarWarsObject
 import com.example.starwarsapp.databinding.FragmentHomeBinding
@@ -92,5 +93,6 @@ class HomeFragment : Fragment(), StarWarsObjectListener {
         } else {
             SWObject.like()
         }
+        viewModel.updateObject(SWObject)
     }
 }

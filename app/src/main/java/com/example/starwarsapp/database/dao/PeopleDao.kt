@@ -13,7 +13,7 @@ interface PeopleDao {
     @Query("Select * from PeopleEntity WHERE id = :id")
     suspend fun getPeopleById(id: String): PeopleWithMovies?
 
-    @Query("SELECT * FROM PeopleEntity WHERE name = :name")
+    @Query("SELECT * FROM PeopleEntity WHERE LOWER(name) LIKE '%' || LOWER(:name) || '%'")
     suspend fun getPeoplesByName(name: String): List<PeopleWithMovies>
 
     @Query("SELECT * FROM PeopleEntity WHERE isLike = 1")

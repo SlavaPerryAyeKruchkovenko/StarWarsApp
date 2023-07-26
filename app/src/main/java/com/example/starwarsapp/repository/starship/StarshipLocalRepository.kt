@@ -25,6 +25,7 @@ class StarshipLocalRepository : IStarshipLocalRepository {
         val db = StarWarsApp.getDatabase()
         val dbStarship = db?.starshipDao()?.getStarshipById(starship.id)
         if (dbStarship != null) {
+            dbStarship.starship.isLike = if (starship.isLiked) 1 else 0
             db.starshipDao().updateStarship(dbStarship.starship)
         }
     }

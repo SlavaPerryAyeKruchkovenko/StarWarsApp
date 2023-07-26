@@ -2,7 +2,6 @@ package com.example.starwarsapp.repository.starship
 
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.IStarship
-import com.example.starwarsapp.database.models.PlanetDB
 import com.example.starwarsapp.database.models.StarshipDB
 import com.example.starwarsapp.network.models.StarshipImpResponse
 import com.example.starwarsapp.network.responses.MovieResponse
@@ -11,8 +10,8 @@ import com.example.starwarsapp.network.responses.StarshipResponse
 import com.example.starwarsapp.repository.interfaces.IStarshipRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.people.PeopleRepository
-import com.example.starwarsapp.repository.planet.PlanetLocalRepository
 import com.example.starwarsapp.repository.utils.Converter
+import java.net.UnknownHostException
 
 class StarshipRepository : IStarshipRepository {
     override suspend fun getStarshipsByName(name: String): List<IStarship> {
@@ -38,6 +37,7 @@ class StarshipRepository : IStarshipRepository {
                         getMovies(it.films)
                     )
                 }
+
                 localRepository.addStarships(starships)
                 localRepository.getStarshipsByName(name).map {
                     StarshipDB.fromStarshipsWithMovieAndPilot(it)
@@ -46,6 +46,10 @@ class StarshipRepository : IStarshipRepository {
                 localRepository.getStarshipsByName(name).map {
                     StarshipDB.fromStarshipsWithMovieAndPilot(it)
                 }
+            }
+        } catch (e: UnknownHostException) {
+            localRepository.getStarshipsByName(name).map {
+                StarshipDB.fromStarshipsWithMovieAndPilot(it)
             }
         } catch (e: Exception) {
             Log.e("get starships by name error", e.toString())
@@ -67,6 +71,7 @@ class StarshipRepository : IStarshipRepository {
     override suspend fun updateStarship(starship: IStarship) {
         val localRepository = StarshipLocalRepository()
         try {
+            Log.d("update",starship.toString())
             localRepository.update(starship)
         } catch (_: Exception) {
 
