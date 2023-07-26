@@ -7,5 +7,7 @@
 </br></br>
 Приложение может работать без интернета, однако если вы недалали никаких запросов с интернетом, то и без интернета данные не появяться
 </br></br>
+
 [telegram](https://t.me/SlavaKruchkovenko)
+
 [Скачать APK](https://github.com/SlavaPerryAyeKruchkovenko/StarWarsApp/releases/download/Star_Wars/app-debug.apk)
