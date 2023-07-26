@@ -2,7 +2,7 @@ package com.example.starwarsapp.repository.movie
 
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.IMovie
-import com.example.starwarsapp.data.responses.MovieResponse
+import com.example.starwarsapp.network.responses.MovieResponse
 import com.example.starwarsapp.repository.interfaces.IMovieRepository
 
 class MovieRepository : IMovieRepository {

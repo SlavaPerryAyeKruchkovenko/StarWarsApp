@@ -7,4 +7,5 @@ interface IStarship {
     val manufacturer: String
     val pilots: List<IPilot>
     val films: List<IMovie>
+    val isLiked: Boolean
 }

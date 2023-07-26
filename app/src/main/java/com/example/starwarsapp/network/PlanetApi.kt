@@ -1,6 +1,6 @@
 package com.example.starwarsapp.network
 
-import com.example.starwarsapp.data.responses.PlanetListResponse
+import com.example.starwarsapp.network.responses.PlanetListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

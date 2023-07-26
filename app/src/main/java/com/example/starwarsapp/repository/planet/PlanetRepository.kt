@@ -2,9 +2,9 @@ package com.example.starwarsapp.repository.planet
 
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.IPlanet
-import com.example.starwarsapp.data.responses.MovieResponse
-import com.example.starwarsapp.data.responses.PlanetImpResponse
-import com.example.starwarsapp.data.responses.PlanetResponse
+import com.example.starwarsapp.network.responses.MovieResponse
+import com.example.starwarsapp.network.models.PlanetImpResponse
+import com.example.starwarsapp.network.responses.PlanetResponse
 import com.example.starwarsapp.repository.interfaces.IPlanetRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.utils.Converter

@@ -1,4 +1,4 @@
-package com.example.starwarsapp.data.responses
+package com.example.starwarsapp.network.responses
 
 import com.example.starwarsapp.data.interfaces.IMovie
 import com.example.starwarsapp.data.models.Movie

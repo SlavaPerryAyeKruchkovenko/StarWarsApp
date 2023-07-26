@@ -1,11 +1,11 @@
-package com.example.starwarsapp.data.responses
+package com.example.starwarsapp.network.responses
 
 import com.google.gson.annotations.SerializedName
 
-data class PeopleResponse(
+data class PlanetResponse(
     @SerializedName("name") val name: String,
-    @SerializedName("gender") val sex: String,
-    @SerializedName("starships") val starships: List<String>,
+    @SerializedName("diameter") val diameter: String,
+    @SerializedName("population") val population: String,
     @SerializedName("films") val films: List<String>,
     @SerializedName("url") val id: String,
 )

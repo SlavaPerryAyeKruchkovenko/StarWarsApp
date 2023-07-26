@@ -8,8 +8,8 @@ data class Planet(
     override val diameter: String,
     override val population: String,
     override val films: List<Movie>,
-    private val isLiked: Boolean = false
-) : StarWarsObject(id,isLiked), IPlanet {
+    override val isLiked: Boolean = false
+) : StarWarsObject(isLiked), IPlanet {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

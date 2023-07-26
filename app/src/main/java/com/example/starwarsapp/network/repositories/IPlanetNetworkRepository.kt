@@ -1,6 +1,6 @@
 package com.example.starwarsapp.network.repositories
 
-import com.example.starwarsapp.data.responses.PlanetListResponse
+import com.example.starwarsapp.network.responses.PlanetListResponse
 import retrofit2.Response
 
 interface IPlanetNetworkRepository {

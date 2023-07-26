@@ -1,4 +1,4 @@
-package com.example.starwarsapp.data.responses
+package com.example.starwarsapp.network.responses
 
 import com.google.gson.annotations.SerializedName
 

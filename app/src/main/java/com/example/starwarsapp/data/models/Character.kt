@@ -8,8 +8,8 @@ data class Character(
     override val sex: String,
     override val starshipsCount: Int,
     override val films: List<Movie>,
-    private val isLiked: Boolean = false
-) : StarWarsObject(id, isLiked), IPeople {
+    override val isLiked: Boolean = false
+) : StarWarsObject(isLiked), IPeople {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

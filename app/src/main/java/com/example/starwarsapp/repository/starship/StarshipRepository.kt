@@ -2,10 +2,10 @@ package com.example.starwarsapp.repository.starship
 
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.IStarship
-import com.example.starwarsapp.data.responses.MovieResponse
-import com.example.starwarsapp.data.responses.PilotResponse
-import com.example.starwarsapp.data.responses.StarshipImpResponse
-import com.example.starwarsapp.data.responses.StarshipResponse
+import com.example.starwarsapp.network.responses.MovieResponse
+import com.example.starwarsapp.network.responses.PilotResponse
+import com.example.starwarsapp.network.models.StarshipImpResponse
+import com.example.starwarsapp.network.responses.StarshipResponse
 import com.example.starwarsapp.repository.interfaces.IStarshipRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.people.PeopleRepository

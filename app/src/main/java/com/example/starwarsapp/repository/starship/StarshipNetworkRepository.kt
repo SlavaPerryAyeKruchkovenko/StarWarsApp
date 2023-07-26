@@ -1,6 +1,6 @@
 package com.example.starwarsapp.repository.starship
 
-import com.example.starwarsapp.data.responses.StarshipsListResponse
+import com.example.starwarsapp.network.responses.StarshipsListResponse
 import com.example.starwarsapp.network.RetrofitBuilder
 import com.example.starwarsapp.network.repositories.IStarshipNetworkRepository
 import retrofit2.Response

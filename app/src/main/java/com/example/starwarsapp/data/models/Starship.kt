@@ -9,8 +9,8 @@ data class Starship(
     override val manufacturer: String,
     override val pilots: List<Pilot>,
     override val films: List<Movie>,
-    private val isLiked: Boolean = false
-) : StarWarsObject(id,isLiked), IStarship {
+    override val isLiked: Boolean = false
+) : StarWarsObject(isLiked), IStarship {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

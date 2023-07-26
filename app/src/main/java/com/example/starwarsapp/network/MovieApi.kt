@@ -1,6 +1,6 @@
 package com.example.starwarsapp.network
 
-import com.example.starwarsapp.data.responses.MovieResponse
+import com.example.starwarsapp.network.responses.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

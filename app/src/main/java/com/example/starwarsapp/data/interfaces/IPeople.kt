@@ -6,4 +6,5 @@ interface IPeople {
     val sex: String
     val starshipsCount: Int
     val films: List<IMovie>
+    val isLiked: Boolean
 }

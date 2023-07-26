@@ -6,4 +6,5 @@ interface IPlanet {
     val diameter: String
     val population: String
     val films: List<IMovie>
+    val isLiked: Boolean
 }

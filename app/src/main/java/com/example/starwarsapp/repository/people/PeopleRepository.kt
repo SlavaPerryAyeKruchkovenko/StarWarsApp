@@ -3,10 +3,10 @@ package com.example.starwarsapp.repository.people
 import android.util.Log
 import com.example.starwarsapp.data.interfaces.IPeople
 import com.example.starwarsapp.data.interfaces.IPilot
-import com.example.starwarsapp.data.responses.PeopleImpResponse
-import com.example.starwarsapp.data.responses.MovieResponse
-import com.example.starwarsapp.data.responses.PeopleResponse
-import com.example.starwarsapp.data.responses.PilotResponse
+import com.example.starwarsapp.network.models.PeopleImpResponse
+import com.example.starwarsapp.network.responses.MovieResponse
+import com.example.starwarsapp.network.responses.PeopleResponse
+import com.example.starwarsapp.network.responses.PilotResponse
 import com.example.starwarsapp.repository.interfaces.IPeopleRepository
 import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.utils.Converter

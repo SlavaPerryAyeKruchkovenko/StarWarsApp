@@ -1,7 +1,7 @@
 package com.example.starwarsapp.repository.people
 
-import com.example.starwarsapp.data.responses.PeopleResponse
-import com.example.starwarsapp.data.responses.PeoplesListResponse
+import com.example.starwarsapp.network.responses.PeopleResponse
+import com.example.starwarsapp.network.responses.PeoplesListResponse
 import com.example.starwarsapp.network.RetrofitBuilder
 import com.example.starwarsapp.network.repositories.IPeopleNetworkRepository
 import retrofit2.Response
