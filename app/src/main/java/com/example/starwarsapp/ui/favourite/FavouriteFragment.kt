@@ -81,6 +81,6 @@ class FavouriteFragment : Fragment(), StarWarsObjectListener {
     }
 
     override fun onClick(SWObject: StarWarsObject) {
-        viewModel.removeElement(SWObject)
+        viewModel.dislikeElement(SWObject)
     }
 }

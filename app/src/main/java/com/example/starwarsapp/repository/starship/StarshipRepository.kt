@@ -71,7 +71,6 @@ class StarshipRepository : IStarshipRepository {
     override suspend fun updateStarship(starship: IStarship) {
         val localRepository = StarshipLocalRepository()
         try {
-            Log.d("update",starship.toString())
             localRepository.update(starship)
         } catch (_: Exception) {
 

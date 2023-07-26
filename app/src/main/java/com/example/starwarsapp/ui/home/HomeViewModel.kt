@@ -23,7 +23,7 @@ class HomeViewModel : ViewModel() {
                 StarshipRepository().getStarshipsByName("TIE")
             }
             val result = response.map {
-                Starship.fromIStarship(it)
+                Starship.fromIStarship(it,it.isLiked)
             }
             liveData.postValue(OutputOf.Success(result))
         }
