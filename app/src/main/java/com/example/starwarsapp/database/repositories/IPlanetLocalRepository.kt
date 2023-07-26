@@ -7,6 +7,6 @@ interface IPlanetLocalRepository {
     suspend fun getPlanetsByName(name: String): List<PlanetWithMovies>
     suspend fun getLikedPlanets(): List<PlanetWithMovies>
     suspend fun addPlanets(planets: List<IPlanet>)
-    suspend fun dislike(planet: IPlanet)
+    suspend fun update(planet: IPlanet)
     suspend fun dislikeAllPlanets()
 }

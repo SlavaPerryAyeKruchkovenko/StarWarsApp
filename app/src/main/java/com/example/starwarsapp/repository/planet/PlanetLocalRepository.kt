@@ -21,7 +21,7 @@ class PlanetLocalRepository : IPlanetLocalRepository {
         db?.planetDao()?.softInsertPlanets(planets)
     }
 
-    override suspend fun dislike(planet: IPlanet) {
+    override suspend fun update(planet: IPlanet) {
         val db = StarWarsApp.getDatabase()
         val dbPlanet = db?.planetDao()?.getPlanetById(planet.id)
         if (dbPlanet != null) {

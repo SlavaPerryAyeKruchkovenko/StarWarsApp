@@ -7,6 +7,6 @@ interface IStarshipLocalRepository {
     suspend fun getStarshipsByName(name: String): List<StarshipWithMoviesAndPilot>
     suspend fun getLikedStarships(): List<StarshipWithMoviesAndPilot>
     suspend fun addStarships(starships: List<IStarship>)
-    suspend fun dislike(starships: IStarship)
+    suspend fun update(starship: IStarship)
     suspend fun dislikeAllStarships()
 }
