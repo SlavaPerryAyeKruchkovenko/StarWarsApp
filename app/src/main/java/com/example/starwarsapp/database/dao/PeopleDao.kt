@@ -7,28 +7,29 @@ import androidx.room.Transaction
 import androidx.room.Update
 import com.example.starwarsapp.data.interfaces.IPeople
 import com.example.starwarsapp.database.entity.PeopleEntity
+import com.example.starwarsapp.database.relation.PeopleWithMovies
 
 @Dao
 interface PeopleDao {
     @Query("Select * from PeopleEntity WHERE id = :id")
-    suspend fun getPeopleById(id: String): PeopleEntity?
+    suspend fun getPeopleById(id: String): PeopleWithMovies?
 
     @Query("SELECT * FROM PeopleEntity WHERE name = :name")
-    suspend fun getPeoplesByName(name: String): List<PeopleEntity>
+    suspend fun getPeoplesByName(name: String): List<PeopleWithMovies>
 
     @Query("SELECT * FROM PeopleEntity WHERE isLike = 1")
-    suspend fun getLikedPeoples(): List<PeopleEntity>
+    suspend fun getLikedPeoples(): List<PeopleWithMovies>
 
     @Transaction
     suspend fun softInsertPeoples(peoples: List<IPeople>) {
-        peoples.forEach { people ->
+        /*peoples.forEach { people ->
             val dbPeople = getPeopleById(people.id)
             if (dbPeople != null) {
                 updatePeople(PeopleEntity.fromIPeople(people, dbPeople.isLike))
             } else {
                 insertPeople(PeopleEntity.fromIPeople(people))
             }
-        }
+        }*/
     }
 
     @Update
