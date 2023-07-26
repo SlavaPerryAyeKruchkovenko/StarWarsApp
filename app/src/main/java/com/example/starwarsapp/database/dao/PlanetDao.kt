@@ -16,6 +16,9 @@ interface PlanetDao {
     @Query("SELECT * FROM PlanetEntity WHERE isLike = 1")
     suspend fun getLikedPlanets(): List<PlanetWithMovies>
 
+    @Query("UPDATE PlanetEntity SET isLike = 0 WHERE isLike >= 1")
+    suspend fun dislikeAllPlanets()
+
     @Transaction
     suspend fun softInsertPlanets(planets: List<IPlanet>) {
         planets.forEach { planet ->

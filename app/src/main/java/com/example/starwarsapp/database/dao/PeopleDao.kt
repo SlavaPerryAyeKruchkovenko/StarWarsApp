@@ -18,7 +18,8 @@ interface PeopleDao {
 
     @Query("SELECT * FROM PeopleEntity WHERE isLike = 1")
     suspend fun getLikedPeoples(): List<PeopleWithMovies>
-
+    @Query("UPDATE PeopleEntity SET isLike = 0 WHERE isLike >= 1")
+    suspend fun dislikeAllPeoples()
     @Transaction
     suspend fun softInsertPeoples(peoples: List<IPeople>) {
         peoples.forEach { people ->

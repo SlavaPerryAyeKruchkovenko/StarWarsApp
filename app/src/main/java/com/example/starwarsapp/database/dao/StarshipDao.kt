@@ -18,6 +18,9 @@ interface StarshipDao {
     @Query("SELECT * FROM StarshipEntity WHERE isLike = 1")
     suspend fun getLikedStarships(): List<StarshipWithMoviesAndPilot>
 
+    @Query("UPDATE StarshipEntity SET isLike = 0 WHERE isLike >= 1")
+    suspend fun dislikeAllStarships()
+
     @Transaction
     suspend fun softInsertStarships(starships: List<IStarship>) {
         starships.forEach { starship ->
