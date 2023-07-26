@@ -12,4 +12,10 @@ data class MovieEntity(
     @ColumnInfo(name = "movie_name") override val name: String,
     override val director: String,
     override val producer: String
-): IMovie
+) : IMovie {
+    companion object {
+        fun fromIMovie(movie: IMovie): MovieEntity {
+            return MovieEntity(movie.id, movie.name, movie.director, movie.producer)
+        }
+    }
+}

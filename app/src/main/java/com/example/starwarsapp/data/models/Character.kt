@@ -1,6 +1,6 @@
 package com.example.starwarsapp.data.models
 
-import com.example.starwarsapp.data.interfaces.ICharacter
+import com.example.starwarsapp.data.interfaces.IPeople
 
 data class Character(
     override val id: String,
@@ -9,7 +9,7 @@ data class Character(
     override val starshipsCount: Int,
     override val films: List<Movie>,
     private val isLiked: Boolean = false
-) : StarWarsObject(id, isLiked), ICharacter {
+) : StarWarsObject(id, isLiked), IPeople {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -27,15 +27,15 @@ data class Character(
     }
 
     companion object {
-        fun fromICharacter(character: ICharacter, isLiked: Boolean = false): Character {
-            val films = character.films.map {
+        fun fromIPeople(people: IPeople, isLiked: Boolean = false): Character {
+            val films = people.films.map {
                 Movie.fromIMovie(it)
             }
             return Character(
-                character.id,
-                character.name,
-                character.sex,
-                character.starshipsCount,
+                people.id,
+                people.name,
+                people.sex,
+                people.starshipsCount,
                 films,
                 isLiked
             )

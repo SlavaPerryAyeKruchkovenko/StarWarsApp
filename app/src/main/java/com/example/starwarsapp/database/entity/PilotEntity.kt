@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 import com.example.starwarsapp.data.interfaces.IMovie
 import com.example.starwarsapp.data.interfaces.IPilot
+import com.example.starwarsapp.data.models.Pilot
 
 data class PilotEntity(
     @PrimaryKey
@@ -11,4 +12,10 @@ data class PilotEntity(
     @ColumnInfo(name = "pilot_name") override val name: String,
     override val sex: String,
     override val starshipCount: Int
-): IPilot
+): IPilot {
+    companion object {
+        fun fromIPilot(pilot: IPilot): PilotEntity {
+            return PilotEntity(pilot.id, pilot.name, pilot.sex, pilot.starshipCount)
+        }
+    }
+}

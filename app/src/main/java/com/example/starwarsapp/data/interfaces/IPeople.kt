@@ -1,6 +1,6 @@
 package com.example.starwarsapp.data.interfaces
 
-interface ICharacter {
+interface IPeople {
     val id: String
     val name: String
     val sex: String

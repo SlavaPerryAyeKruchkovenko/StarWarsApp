@@ -1,9 +1,9 @@
 package com.example.starwarsapp.repository.people
 
 import android.util.Log
-import com.example.starwarsapp.data.interfaces.ICharacter
+import com.example.starwarsapp.data.interfaces.IPeople
 import com.example.starwarsapp.data.interfaces.IPilot
-import com.example.starwarsapp.data.responses.CharacterResponse
+import com.example.starwarsapp.data.responses.PeopleImpResponse
 import com.example.starwarsapp.data.responses.MovieResponse
 import com.example.starwarsapp.data.responses.PeopleResponse
 import com.example.starwarsapp.data.responses.PilotResponse
@@ -12,7 +12,7 @@ import com.example.starwarsapp.repository.movie.MovieRepository
 import com.example.starwarsapp.repository.utils.Converter
 
 class PeopleRepository : IPeopleRepository {
-    override suspend fun getPeoplesByName(name: String): List<ICharacter> {
+    override suspend fun getPeoplesByName(name: String): List<IPeople> {
         val networkRepository = PeopleNetworkRepository()
 
         suspend fun getNext(next: String): List<PeopleResponse> {
@@ -52,7 +52,7 @@ class PeopleRepository : IPeopleRepository {
                 }
 
                 val peoples = resPeoples.map {
-                    CharacterResponse(
+                    PeopleImpResponse(
                         Converter.convertUrlToId(it.id).toString(),
                         it.name,
                         it.sex,
