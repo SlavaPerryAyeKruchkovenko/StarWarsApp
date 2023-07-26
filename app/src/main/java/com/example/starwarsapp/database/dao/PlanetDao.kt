@@ -2,6 +2,7 @@ package com.example.starwarsapp.database.dao
 
 import androidx.room.*
 import com.example.starwarsapp.data.interfaces.IPlanet
+import com.example.starwarsapp.database.entity.MovieEntity
 import com.example.starwarsapp.database.entity.PlanetEntity
 import com.example.starwarsapp.database.relation.PlanetWithMovies
 
@@ -17,19 +18,32 @@ interface PlanetDao {
 
     @Transaction
     suspend fun softInsertPlanets(planets: List<IPlanet>) {
-        /*planets.forEach { planet ->
+        planets.forEach { planet ->
             val dbPlanet = getPlanetById(planet.id)
-            if (dbPlanet != null) {
-                updatePlanet(PlanetEntity.fromIPlanet(planet, dbPlanet.isLike))
-            } else {
-                insertPlanet(PlanetEntity.fromIPlanet(planet))
+            val movies = planet.films.map {
+                MovieEntity.fromIMovie(it)
             }
-        }*/
+            if (dbPlanet != null) {
+                deletePlanet(dbPlanet.planet, dbPlanet.movies)
+                insertPlanet(
+                    PlanetEntity.fromIPlanet(planet, dbPlanet.planet.isLike),
+                    movies
+                )
+            } else {
+                insertPlanet(PlanetEntity.fromIPlanet(planet), movies)
+            }
+        }
     }
+
+    @Delete
+    suspend fun deletePlanet(
+        people: PlanetEntity,
+        movie: List<MovieEntity>
+    )
 
     @Update
     suspend fun updatePlanet(planet: PlanetEntity)
 
     @Insert
-    suspend fun insertPlanet(planet: PlanetEntity)
+    suspend fun insertPlanet(planet: PlanetEntity, movie: List<MovieEntity>)
 }

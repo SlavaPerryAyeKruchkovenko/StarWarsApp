@@ -1,12 +1,11 @@
 package com.example.starwarsapp.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
-import androidx.room.Update
+import androidx.room.*
 import com.example.starwarsapp.data.interfaces.IPeople
+import com.example.starwarsapp.database.entity.MovieEntity
 import com.example.starwarsapp.database.entity.PeopleEntity
+import com.example.starwarsapp.database.entity.PilotEntity
+import com.example.starwarsapp.database.entity.StarshipEntity
 import com.example.starwarsapp.database.relation.PeopleWithMovies
 
 @Dao
@@ -22,19 +21,30 @@ interface PeopleDao {
 
     @Transaction
     suspend fun softInsertPeoples(peoples: List<IPeople>) {
-        /*peoples.forEach { people ->
+        peoples.forEach { people ->
             val dbPeople = getPeopleById(people.id)
-            if (dbPeople != null) {
-                updatePeople(PeopleEntity.fromIPeople(people, dbPeople.isLike))
-            } else {
-                insertPeople(PeopleEntity.fromIPeople(people))
+            val movies = people.films.map {
+                MovieEntity.fromIMovie(it)
             }
-        }*/
+            if (dbPeople != null) {
+                deletePeople(dbPeople.people, dbPeople.movies)
+                insertPeople(
+                    PeopleEntity.fromIPeople(people, dbPeople.people.isLike),
+                    movies
+                )
+            } else {
+                insertPeople(PeopleEntity.fromIPeople(people), movies)
+            }
+        }
     }
-
+    @Delete
+    suspend fun deletePeople(
+        people: PeopleEntity,
+        movie: List<MovieEntity>
+    )
     @Update
     suspend fun updatePeople(people: PeopleEntity)
 
     @Insert
-    suspend fun insertPeople(people: PeopleEntity)
+    suspend fun insertPeople(people: PeopleEntity,movie: List<MovieEntity>)
 }

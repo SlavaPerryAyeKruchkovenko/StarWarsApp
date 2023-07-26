@@ -12,7 +12,7 @@ data class PeopleWithMovies(
     @Relation(
         parentColumn = "id",
         entityColumn = "movie_id",
-        entity = MovieEntity::class
+        entity = MovieEntity::class,
     )
     val movies: List<MovieEntity>
 )
