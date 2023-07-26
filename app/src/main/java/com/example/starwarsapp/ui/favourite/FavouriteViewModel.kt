@@ -35,17 +35,17 @@ class FavouriteViewModel : ViewModel() {
             when (SWObject) {
                 is IStarship -> {
                     starshipRepository.updateStarship(
-                        Starship.fromIStarship(SWObject, SWObject.isLike)
+                        Starship.fromIStarship(SWObject, false)
                     )
                 }
                 is IPeople -> {
                     peopleRepository.updatePeople(
-                        Character.fromIPeople(SWObject, SWObject.isLike)
+                        Character.fromIPeople(SWObject, false)
                     )
                 }
                 is IPlanet -> {
                     planetRepository.updatePlanet(
-                        Planet.fromIPlanet(SWObject, SWObject.isLike)
+                        Planet.fromIPlanet(SWObject, false)
                     )
                 }
                 else -> {

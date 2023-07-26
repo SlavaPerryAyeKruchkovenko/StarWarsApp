@@ -46,6 +46,6 @@ interface PeopleDao {
     @Update
     suspend fun updatePeople(people: PeopleEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPeople(people: PeopleEntity,movie: List<MovieEntity>)
 }

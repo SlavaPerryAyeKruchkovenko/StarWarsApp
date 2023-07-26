@@ -47,6 +47,6 @@ interface PlanetDao {
     @Update
     suspend fun updatePlanet(planet: PlanetEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlanet(planet: PlanetEntity, movie: List<MovieEntity>)
 }
