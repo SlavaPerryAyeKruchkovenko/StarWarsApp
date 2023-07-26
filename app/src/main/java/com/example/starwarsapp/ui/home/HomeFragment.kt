@@ -1,7 +1,6 @@
 package com.example.starwarsapp.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,11 +85,10 @@ class HomeFragment : Fragment(), StarWarsObjectListener {
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(value: String): Boolean {
                 val requestType = binding.requestType.text.toString()
-                try {
-                    val type = RequestType.valueOf(requestType.uppercase())
-                    viewModel.findByName(value,type)
-                } catch (_: Exception) {
-
+                enumValues<RequestType>().forEach {
+                    if (getString(it.value) == requestType) {
+                        viewModel.findByName(value, it)
+                    }
                 }
                 return false
             }

@@ -1,5 +1,6 @@
 package com.example.starwarsapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,9 @@ class HomeViewModel : ViewModel() {
     }
 
     fun findByName(name: String, type: RequestType) {
+        Log.e("lastName",lastName.toString())
+        Log.e("name",name)
+        Log.e("res",(lastName != name || lastType != type).toString())
         if (name.trim().length >= 2) {
             if (liveData.value !is OutputOf.Loader && (lastName != name || lastType != type)) {
                 liveData.postValue(OutputOf.Loader())

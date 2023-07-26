@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Star Wars Wiki</string>
+    <string name="search">Поиск</string>
+    <string name="favourite">Любимые</string>
+    <string name="name">Имя:</string>
+    <string name="no_data">Нет данных</string>
+    <string name="like">Нравиться</string>
+    <string name="sex">Пол:</string>
+    <string name="starships">Звездолет:</string>
+    <string name="movies">Фильмы:</string>
+    <string name="director">Режисер:</string>
+    <string name="producer">Продюсер:</string>
+    <string name="diameter">Диаметр:</string>
+    <string name="population">Насиление:</string>
+    <string name="model">Модель:</string>
+    <string name="manufacturer">Производитель:</string>
+    <string name="pilots">Пилоты:</string>
+    <string name="request_type">Тип запроса</string>
+    <string name="characters">Персонажи</string>
+    <string name="planets">Планеты</string>
+    <string name="starships_simple">Звездолеты</string>
+    <string name="all">Все</string>
+    <string name="character">Персонаж</string>
+    <string name="planet">Планета</string>
+    <string name="starship">Звездолет</string>
+    <string name="clear">Отчистить</string>
+    <string name="favourite_no_data">Пока что пусто</string>
+    <string name="loader">Загрузка</string>
+    <string name="enter_text">Введите 2 или более символа для получения результата</string>
+    <string name="not_found">Не найдено</string>
+</resources>
